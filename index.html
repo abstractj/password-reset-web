@@ -12,19 +12,16 @@
 
 </body>
 
-    <script type="text/template" id="reset-template">
-        <div class="hero-unit">
-          <h1>'Allo, 'Allo!</h1>
-          <p>You now have</p>
-          <ul>
-            <li>HTML5 Boilerplate</li>
-            <li>jQuery</li>
-            <li>Backbone.js</li>
-            <li>Underscore.js</li>
-            <li>Modernizr</li>
-            <li>RequireJS</li>
-          </ul>
-        </div>
+    <div id="reset-page" class="hero-unit">
+        <h1>Password reset</h1>
+        <p>E-mail:</p>
+        <input id="email" type="text" placeholder="john@doe.com"/>
+        <input id="reset-button" type="submit" value="Reset" />
+    </div>
+
+    <script type="text/template" id="info-template">
+         <h1>Password reseted!</h1>
+         <p>Instructions sent to <em><%= email %></em></p>
     </script>
     <script data-main="js/app" src="js/components/requirejs/require.js"></script>
 </body>

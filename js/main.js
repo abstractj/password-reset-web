@@ -1,8 +1,12 @@
 define(['jquery', 'underscore'], function($, _, aerogear, text){
+  $(function(){
 
-    $(function(){
-      _(["rebecca", "adam"]).each(function(n){
-        console.log(n + " is my BFF!");
+      var info = _.template( $("#info-template").text() );
+
+      $( "#reset-button" ).click( function() {
+          var html = info( {'email': $("#email").val()} );
+          $("#reset-page").html( html );
+      });
     });
   });
 });
