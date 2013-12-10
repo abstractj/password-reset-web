@@ -3,11 +3,6 @@ define(['jquery', 'underscore', 'aerogear'], function($, _, aerogear){
 
       var info = _.template( $("#info-template").text() );
 
-      $( "#reset-button" ).click( function() {
-          var html = info( {'email': $("#email").val()} );
-          $("#reset-page").html( html );
-      });
-
       var forgotPipeline = AeroGear.Pipeline([
           {
               name: "forgot",
@@ -17,13 +12,22 @@ define(['jquery', 'underscore', 'aerogear'], function($, _, aerogear){
           }
       ]).pipes.forgot;
 
-      forgotPipeline.read({email : 'bruno@abstractj.com'} ,{
-          success: function( data ) {
-            console.log("Yay: " + data);
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-              console.log("WAT? " + textStatus);
-          }
+      var forgot = function ( email ) {
+        forgotPipeline.read({
+            query: {email : email},
+            success: function( data ) {
+              $("#reset-page").html( email );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.log("WAT? " + errorThrown);
+            }
+        });
+      };
+
+      $( "#reset-button" ).click( function() {
+          var email = info( {'email': $("#email").val()} );
+          forgot ( email );
       });
+
   });
 });
