@@ -2,8 +2,7 @@ require.config({
   paths: {
     jquery: 'components/jquery/jquery.min',
     underscore: 'components/underscore/underscore-min',
-    aerogear: 'components/aerogear/aerogear.min',
-    text: 'components/requirejs-text/text'
+    aerogear: 'components/aerogear/aerogear.min'
   },
   shim: {
     underscore: {
